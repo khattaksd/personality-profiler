@@ -1,0 +1,142 @@
+[
+  {
+    "id": "snapshot-horizon-1",
+    "prompt": "I enjoy exploring ideas that challenge the way I usually think.",
+    "trait": "openness",
+    "reverse": false,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-horizon-2",
+    "prompt": "I would rather repeat what already works than experiment with something new.",
+    "trait": "openness",
+    "reverse": true,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-blueprint-1",
+    "prompt": "I make a clear plan before I begin something important.",
+    "trait": "conscientiousness",
+    "reverse": false,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-blueprint-2",
+    "prompt": "I tend to leave important tasks until the last possible moment.",
+    "trait": "conscientiousness",
+    "reverse": true,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-spark-1",
+    "prompt": "Being around other people usually gives me energy.",
+    "trait": "extraversion",
+    "reverse": false,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-spark-2",
+    "prompt": "I would rather observe quietly than speak up early in a group.",
+    "trait": "extraversion",
+    "reverse": true,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-anchor-1",
+    "prompt": "When conflict happens, I try to understand the other person's side.",
+    "trait": "agreeableness",
+    "reverse": false,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-anchor-2",
+    "prompt": "I find it easy to put my needs ahead of everyone else's.",
+    "trait": "agreeableness",
+    "reverse": true,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-pulse-1",
+    "prompt": "Small setbacks can throw off my mood for longer than I would like.",
+    "trait": "neuroticism",
+    "reverse": false,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "snapshot-pulse-2",
+    "prompt": "I stay calm when plans suddenly change.",
+    "trait": "neuroticism",
+    "reverse": true,
+    "modes": ["snapshot", "deep"]
+  },
+  {
+    "id": "deep-horizon-3",
+    "prompt": "I like connecting ideas from very different fields just to see what happens.",
+    "trait": "openness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-horizon-4",
+    "prompt": "Abstract or symbolic conversations usually feel less interesting than practical ones.",
+    "trait": "openness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-3",
+    "prompt": "I feel better when priorities, deadlines, and next steps are clearly defined.",
+    "trait": "conscientiousness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-4",
+    "prompt": "I often underestimate how much time a task will really take.",
+    "trait": "conscientiousness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-3",
+    "prompt": "I naturally become more expressive when a room feels flat or quiet.",
+    "trait": "extraversion",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-4",
+    "prompt": "Too much social time drains me faster than it energizes me.",
+    "trait": "extraversion",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-3",
+    "prompt": "People usually experience me as patient, fair, and easy to work with.",
+    "trait": "agreeableness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-4",
+    "prompt": "When stakes are high, I can become blunt enough to ignore how others feel.",
+    "trait": "agreeableness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-3",
+    "prompt": "I replay stressful moments in my head longer than I want to.",
+    "trait": "neuroticism",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-4",
+    "prompt": "Even in uncertainty, I can usually recover my balance quickly.",
+    "trait": "neuroticism",
+    "reverse": true,
+    "modes": ["deep"]
+  }
+]

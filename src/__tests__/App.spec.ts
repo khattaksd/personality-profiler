@@ -1,11 +1,25 @@
-import { describe, it, expect } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
-import { mount } from '@vue/test-utils'
+import { createPinia } from 'pinia'
+import { flushPromises, mount } from '@vue/test-utils'
 import App from '../App.vue'
+import router from '../router'
 
 describe('App', () => {
-  it('mounts renders properly', () => {
-    const wrapper = mount(App)
-    expect(wrapper.text()).toContain('Shadcn/Vue is ready to use')
+  beforeEach(async () => {
+    await router.push('/')
+    await router.isReady()
+  })
+
+  it('renders the landing page', async () => {
+    const wrapper = mount(App, {
+      global: {
+        plugins: [createPinia(), router],
+      },
+    })
+
+    await flushPromises()
+
+    expect(wrapper.text()).toContain('Find the five elements of you.')
   })
 })
