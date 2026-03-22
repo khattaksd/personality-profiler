@@ -39,3 +39,7 @@ __screenshots__/
 
 test-results/
 playwright-report/
+
+# Auto-generated obfuscated questions (source: src/data/questions.json)
+src/data/questions-obfuscated.ts
+

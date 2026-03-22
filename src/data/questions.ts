@@ -1,4 +1,4 @@
-import questionsData from './questions.json'
+import { decodeQuestions } from './questions-obfuscated'
 
 import {
   ASSESSMENT_MODES,
@@ -14,7 +14,7 @@ const isTraitId = (value: string): value is TraitId =>
 const isAssessmentMode = (value: string): value is AssessmentMode =>
   ASSESSMENT_MODES.includes(value as AssessmentMode)
 
-const questionBankCandidate: unknown[] = questionsData
+const questionBankCandidate: unknown[] = decodeQuestions()
 
 export const questionBank: PersonalityQuestion[] = questionBankCandidate.map((question) => {
   if (
