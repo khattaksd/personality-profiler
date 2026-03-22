@@ -3,22 +3,13 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
-import { VueMcp } from 'vite-plugin-vue-mcp'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import watchQuestionsPlugin from './scripts/vite-plugin-watch-questions'
 
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [
-    vue(),
-    tailwindcss(),
-    // MCP has apply: "serve" built-in, but vitest merges configs as "serve"
-    // Only load for actual dev server, not tests
-    ...(process.env.VITEST ? [] : [VueMcp()]),
-    vueDevTools(),
-    watchQuestionsPlugin(),
-  ],
+  plugins: [vue(), tailwindcss(), vueDevTools(), watchQuestionsPlugin()],
   server: {
     port: 5174,
   },

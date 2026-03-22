@@ -52,7 +52,6 @@
     "typescript": "~5.9.3",
     "vite": "beta",
     "vite-plugin-vue-devtools": "^8.0.6",
-    "vite-plugin-vue-mcp": "^0.3.2",
     "vitest": "^4.0.18",
     "vue-tsc": "^3.2.5"
   },
