@@ -13,7 +13,8 @@ export default defineConfig({
   plugins: [
     vue(),
     tailwindcss(),
-    // Disable MCP in test environments
+    // MCP has apply: "serve" built-in, but vitest merges configs as "serve"
+    // Only load for actual dev server, not tests
     ...(process.env.VITEST ? [] : [VueMcp()]),
     vueDevTools(),
     watchQuestionsPlugin(),
