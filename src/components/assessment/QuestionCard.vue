@@ -27,10 +27,7 @@ const emit = defineEmits<{
       </div>
 
       <div class="space-y-3">
-        <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Choose the segment that fits best
-        </p>
-        <h1 class="text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+        <h1 class="min-h-20 text-2xl font-semibold leading-tight sm:text-3xl sm:min-h-24">
           {{ question.prompt }}
         </h1>
       </div>

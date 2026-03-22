@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Circle } from 'lucide-vue-next'
 import type { ResponseValue } from '@/lib/personality'
 
 const props = defineProps<{
@@ -9,12 +10,12 @@ const emit = defineEmits<{
   'update:modelValue': [value: ResponseValue]
 }>()
 
-const options: Array<{ value: ResponseValue; label: string; shortLabel: string }> = [
-  { value: 1, label: 'Strongly disagree', shortLabel: '1' },
-  { value: 2, label: 'Disagree', shortLabel: '2' },
-  { value: 3, label: 'Neutral', shortLabel: '3' },
-  { value: 4, label: 'Agree', shortLabel: '4' },
-  { value: 5, label: 'Strongly agree', shortLabel: '5' },
+const options: Array<{ value: ResponseValue; label: string }> = [
+  { value: 1, label: 'Strongly disagree' },
+  { value: 2, label: 'Disagree' },
+  { value: 3, label: 'Neutral' },
+  { value: 4, label: 'Agree' },
+  { value: 5, label: 'Strongly agree' },
 ]
 </script>
 
@@ -32,20 +33,27 @@ const options: Array<{ value: ResponseValue; label: string; shortLabel: string }
         type="button"
         :aria-label="option.label"
         :aria-pressed="modelValue === option.value"
-        class="flex min-h-16 items-center justify-center rounded-2xl border bg-card text-lg font-semibold text-card-foreground transition duration-200 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        class="flex min-h-16 items-center justify-center rounded-2xl border bg-card transition duration-200 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         :class="
           modelValue === option.value
-            ? 'scale-105 border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/20'
+            ? 'scale-105 border-primary bg-primary shadow-lg shadow-primary/20'
             : 'border-border'
         "
         @click="emit('update:modelValue', option.value)"
       >
-        {{ option.shortLabel }}
+        <Circle
+          class="size-5"
+          :class="
+            modelValue === option.value
+              ? 'fill-primary-foreground stroke-primary-foreground'
+              : 'stroke-muted-foreground'
+          "
+        />
       </button>
     </div>
 
     <p class="text-center text-sm text-muted-foreground">
-      {{ options.find((option) => option.value === props.modelValue)?.label ?? 'Choose the segment that feels closest to you.' }}
+      {{ options.find((option) => option.value === props.modelValue)?.label }}
     </p>
   </div>
 </template>
