@@ -110,24 +110,6 @@ const goDeeper = () => {
             </p>
           </div>
         </article>
-
-        <!-- Top Strengths -->
-        <article class="rounded-3xl border border-border bg-card p-6 shadow-sm md:col-span-2">
-          <div class="space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Top Strengths
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="strength in personalityStore.strengths"
-                :key="strength"
-                class="inline-block px-4 py-2 bg-muted rounded-full text-sm font-medium text-foreground"
-              >
-                {{ strength }}
-              </span>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
   </main>
