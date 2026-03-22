@@ -1,9 +1,9 @@
 import path from 'path'
-import { fileURLToPath } from 'url'
 import fs from 'fs'
 import type { Plugin, ResolvedConfig, HmrContext } from 'vite'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const QUESTIONS_INPUT_PATH = 'src/data/questions.json'
+const QUESTIONS_OUTPUT_PATH = 'src/data/questions-obfuscated.ts'
 
 interface ObfuscationResult {
   message: string
@@ -12,8 +12,8 @@ interface ObfuscationResult {
 }
 
 async function generateObfuscatedQuestions(rootDir: string): Promise<ObfuscationResult> {
-  const questionsPath = path.join(rootDir, 'src/data/questions.json')
-  const outputPath = path.join(rootDir, 'src/data/questions-obfuscated.ts')
+  const questionsPath = path.join(rootDir, QUESTIONS_INPUT_PATH)
+  const outputPath = path.join(rootDir, QUESTIONS_OUTPUT_PATH)
 
   const questionsJson = fs.readFileSync(questionsPath, 'utf-8')
   const questions = JSON.parse(questionsJson)
@@ -39,7 +39,7 @@ export function decodeQuestions(): unknown[] {
   fs.writeFileSync(outputPath, tsContent)
 
   return {
-    message: `✓ Obfuscated questions written to ${outputPath}`,
+    message: `✓ Obfuscated questions written to ${QUESTIONS_OUTPUT_PATH}`,
     originalSize: questionsJson.length,
     encodedSize: encoded.length,
   }
@@ -68,7 +68,7 @@ export default function watchQuestionsPlugin(): Plugin {
     },
 
     async handleHotUpdate({ file, server }: HmrContext) {
-      const questionsPath = path.join(config.root, 'src/data/questions.json')
+      const questionsPath = path.join(config.root, QUESTIONS_INPUT_PATH)
 
       if (path.resolve(file) === path.resolve(questionsPath)) {
         console.log('📝 questions.json changed, regenerating obfuscated version...')
