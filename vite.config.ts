@@ -10,9 +10,6 @@ import watchQuestionsPlugin from './scripts/vite-plugin-watch-questions'
 export default defineConfig({
   base: '/',
   plugins: [vue(), tailwindcss(), vueDevTools(), watchQuestionsPlugin()],
-  server: {
-    port: 5174,
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
