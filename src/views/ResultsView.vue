@@ -37,18 +37,18 @@ const goDeeper = () => {
         <h2 class="text-lg font-semibold text-foreground">Core Traits</h2>
         <p class="text-sm text-muted-foreground">How your five traits show up in the world</p>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div class="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="trait in personalityStore.traitResults"
           :key="trait.trait"
-          class="flex flex-col items-center gap-4 rounded-3xl border border-border bg-card p-6 shadow-sm"
+          class="flex flex-col items-center gap-3 rounded-3xl border border-border bg-card p-4 sm:p-5 shadow-sm"
         >
           <CircularGauge
             :value="trait.simpleScore ?? 0"
             :label="trait.meta.friendlyLabel"
             :size="160"
           />
-          <p class="text-center text-sm leading-6 text-muted-foreground">
+          <p class="text-center text-xs sm:text-sm leading-5 sm:leading-6 text-muted-foreground px-1">
             {{ trait.summary }}
           </p>
         </div>
