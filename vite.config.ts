@@ -9,6 +9,7 @@ import watchQuestionsPlugin from './scripts/vite-plugin-watch-questions'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [vue(), tailwindcss(), VueMcp(), vueDevTools(), watchQuestionsPlugin()],
   server: {
     port: 5174,
