@@ -14,8 +14,7 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "oxfmt src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "format": "oxfmt src/"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -43,7 +42,6 @@
     "eslint-plugin-oxlint": "~1.50.0",
     "eslint-plugin-playwright": "^2.8.0",
     "eslint-plugin-vue": "~10.8.0",
-    "gh-pages": "^6.3.0",
     "jiti": "^2.6.1",
     "jsdom": "^28.1.0",
     "npm-run-all2": "^8.0.4",
