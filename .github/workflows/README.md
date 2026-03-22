@@ -98,8 +98,10 @@ The workflow automatically:
 - Manages environment settings
 
 You just need to make sure:
-1. **Settings → Pages → Source** is set to "GitHub Actions"
+1. **Settings → Pages → Source** is set to "Deploy from a branch" (NOT "GitHub Actions")
 2. **Custom domain** is set to essence.khattak.cc
+
+**⚠️ Important:** If "Source" is set to "GitHub Actions", GitHub will trigger a redundant automatic deployment workflow in addition to your manual one. To avoid this, change to "Deploy from a branch" and set the branch to "None". See `PAGES_SETUP.md` for detailed setup instructions.
 
 ### Future Deployments
 
