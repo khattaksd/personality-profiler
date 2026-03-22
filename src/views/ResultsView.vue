@@ -20,7 +20,7 @@ const goDeeper = () => {
 
 <template>
   <main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-6 py-12">
-    <section class="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+    <section class="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
       <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div class="space-y-3">
           <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">

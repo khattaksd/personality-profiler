@@ -61,6 +61,7 @@ const restart = () => {
 
     <QuestionCard
       v-if="currentQuestion"
+      :key="currentQuestion.id"
       :question="currentQuestion"
       :answer="currentAnswer"
       :current="personalityStore.progress.current"

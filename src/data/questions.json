@@ -138,5 +138,145 @@
     "trait": "neuroticism",
     "reverse": true,
     "modes": ["deep"]
+  },
+  {
+    "id": "deep-horizon-5",
+    "prompt": "I'm drawn to understanding why things work the way they do.",
+    "trait": "openness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-horizon-6",
+    "prompt": "I prefer familiar solutions over trying innovative approaches.",
+    "trait": "openness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-horizon-7",
+    "prompt": "I enjoy working with complex problems that don't have obvious answers.",
+    "trait": "openness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-horizon-8",
+    "prompt": "Routine and predictability are comforting to me.",
+    "trait": "openness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-5",
+    "prompt": "I'm known for following through on what I commit to.",
+    "trait": "conscientiousness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-6",
+    "prompt": "I struggle to maintain focus on projects that feel tedious.",
+    "trait": "conscientiousness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-7",
+    "prompt": "I take pride in doing things thoroughly and well.",
+    "trait": "conscientiousness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-blueprint-8",
+    "prompt": "I'm often flexible about my standards depending on the situation.",
+    "trait": "conscientiousness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-5",
+    "prompt": "I seek out situations where I can meet and interact with new people.",
+    "trait": "extraversion",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-6",
+    "prompt": "I'm satisfied with a small circle of close relationships.",
+    "trait": "extraversion",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-7",
+    "prompt": "I light up and feel energized when I'm the center of attention.",
+    "trait": "extraversion",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-spark-8",
+    "prompt": "I need downtime to process after social events.",
+    "trait": "extraversion",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-5",
+    "prompt": "I naturally think about how my choices will affect others.",
+    "trait": "agreeableness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-6",
+    "prompt": "I'm not as bothered by conflict as some people seem to be.",
+    "trait": "agreeableness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-7",
+    "prompt": "I go out of my way to help people even if it inconveniences me.",
+    "trait": "agreeableness",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-anchor-8",
+    "prompt": "I tend to prioritize winning or being right in disagreements.",
+    "trait": "agreeableness",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-5",
+    "prompt": "I find myself worrying about things even when there's no real problem.",
+    "trait": "neuroticism",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-6",
+    "prompt": "I rarely feel anxious or overwhelmed, even during difficult times.",
+    "trait": "neuroticism",
+    "reverse": true,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-7",
+    "prompt": "My emotions tend to shift more intensely than I'd prefer.",
+    "trait": "neuroticism",
+    "reverse": false,
+    "modes": ["deep"]
+  },
+  {
+    "id": "deep-pulse-8",
+    "prompt": "I maintain a generally positive outlook even when things go wrong.",
+    "trait": "neuroticism",
+    "reverse": true,
+    "modes": ["deep"]
   }
 ]

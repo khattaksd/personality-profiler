@@ -19,7 +19,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <article class="w-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+  <article class="w-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
     <div class="space-y-6">
       <div class="flex items-center justify-between gap-3 text-sm text-muted-foreground">
         <span>{{ current }} / {{ total }}</span>
