@@ -2,6 +2,8 @@
 import { useRouter } from 'vue-router'
 
 import { Button } from '@/components/ui/button'
+import { CircularGauge } from '@/components/ui/gauge'
+import PersonalityHeader from '@/components/personality/PersonalityHeader.vue'
 import { usePersonalityStore } from '@/stores/personality'
 
 const router = useRouter()
@@ -20,108 +22,113 @@ const goDeeper = () => {
 
 <template>
   <main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-6 py-12">
-    <section class="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div class="space-y-3">
-          <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Your current profile
-          </p>
-          <h1 class="text-4xl font-semibold tracking-tight text-balance">
-            {{ personalityStore.archetype.name }}
-          </h1>
-          <p class="max-w-3xl text-base leading-7 text-muted-foreground">
-            {{ personalityStore.archetype.summary }}
-          </p>
-        </div>
+    <!-- TOP SECTION: Personality Header -->
+    <section class="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+      <PersonalityHeader
+        :archetype-name="personalityStore.archetype.name"
+        :archetype-summary="personalityStore.archetype.summary"
+        :trait-scores="personalityStore.traitResults"
+      />
+    </section>
 
-        <div class="flex flex-wrap gap-3">
-          <Button variant="outline" @click="$router.push('/')">
-            Back home
-          </Button>
-          <Button variant="outline" @click="startOver">
-            Retake snapshot
-          </Button>
-          <Button v-if="personalityStore.canContinueToDeep" @click="goDeeper">
-            Go deeper
-          </Button>
+    <!-- MIDDLE SECTION: Trait Gauges -->
+    <section class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+      <div class="mb-4">
+        <h2 class="text-lg font-semibold text-foreground">Core Traits</h2>
+        <p class="text-sm text-muted-foreground">How your five traits show up in the world</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          v-for="trait in personalityStore.traitResults"
+          :key="trait.trait"
+          class="flex flex-col items-center gap-4 rounded-3xl border border-border bg-card p-6 shadow-sm"
+        >
+          <CircularGauge
+            :value="trait.simpleScore ?? 0"
+            :label="trait.meta.friendlyLabel"
+            :size="160"
+          />
+          <p class="text-center text-sm leading-6 text-muted-foreground">
+            {{ trait.summary }}
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
-      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <article
-          v-for="trait in personalityStore.traitResults"
-          :key="trait.trait"
-          class="rounded-3xl border border-border bg-card p-5 shadow-sm"
-        >
+    <!-- BOTTOM SECTION: Secondary Info -->
+    <section class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+      <div class="mb-4 flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-semibold text-foreground">Additional Perspectives</h2>
+          <p class="text-sm text-muted-foreground">Other useful frameworks for self-understanding</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <Button variant="outline" size="sm" @click="$router.push('/')">
+            Back home
+          </Button>
+          <Button variant="outline" size="sm" @click="startOver">
+            Retake snapshot
+          </Button>
+          <Button v-if="personalityStore.canContinueToDeep" size="sm" @click="goDeeper">
+            Go deeper
+          </Button>
+        </div>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        <!-- MBTI -->
+        <article class="rounded-3xl border border-border bg-card p-6 shadow-sm">
           <div class="space-y-3">
             <div>
-              <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                {{ trait.meta.friendlyLabel }}
+              <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                MBTI Shorthand
               </p>
-              <h2 class="text-xl font-semibold">{{ trait.meta.name }}</h2>
-              <p class="text-sm text-muted-foreground">{{ trait.meta.friendlyDescription }}</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">
+                {{ personalityStore.mbtiProjection.code }}
+              </h3>
             </div>
-
-            <div class="grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-2xl bg-muted p-3">
-                <p class="text-muted-foreground">Simple</p>
-                <p class="text-lg font-semibold">{{ trait.simpleScore ?? '--' }}%</p>
-              </div>
-              <div class="rounded-2xl bg-muted p-3">
-                <p class="text-muted-foreground">Percentile</p>
-                <p class="text-lg font-semibold">{{ trait.percentile ?? '--' }}</p>
-              </div>
-            </div>
-
             <p class="text-sm leading-6 text-muted-foreground">
-              {{ trait.summary }}
+              {{ personalityStore.mbtiProjection.summary }}
             </p>
+          </div>
+        </article>
+
+        <!-- Enneagram -->
+        <article class="rounded-3xl border border-border bg-card p-6 shadow-sm">
+          <div class="space-y-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Enneagram Signal
+              </p>
+              <h3 class="text-3xl font-bold text-primary mt-2">
+                Type {{ personalityStore.enneagramProjection.type }}
+              </h3>
+              <p class="text-sm font-medium text-foreground">{{ personalityStore.enneagramProjection.label }}</p>
+            </div>
+            <p class="text-sm leading-6 text-muted-foreground">
+              {{ personalityStore.enneagramProjection.summary }}
+            </p>
+          </div>
+        </article>
+
+        <!-- Top Strengths -->
+        <article class="rounded-3xl border border-border bg-card p-6 shadow-sm md:col-span-2">
+          <div class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Top Strengths
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="strength in personalityStore.strengths"
+                :key="strength"
+                class="inline-block px-4 py-2 bg-muted rounded-full text-sm font-medium text-foreground"
+              >
+                {{ strength }}
+              </span>
+            </div>
           </div>
         </article>
       </div>
-
-      <aside class="space-y-4">
-        <article class="rounded-3xl border border-border bg-card p-5 shadow-sm">
-          <div class="space-y-3">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Secondary lenses
-            </p>
-            <div>
-              <h2 class="text-xl font-semibold">MBTI shorthand: {{ personalityStore.mbtiProjection.code }}</h2>
-              <p class="text-sm leading-6 text-muted-foreground">
-                {{ personalityStore.mbtiProjection.summary }}
-              </p>
-            </div>
-            <div>
-              <h2 class="text-xl font-semibold">
-                Enneagram signal: Type {{ personalityStore.enneagramProjection.type }}
-              </h2>
-              <p class="text-sm leading-6 text-muted-foreground">
-                {{ personalityStore.enneagramProjection.label }} — {{ personalityStore.enneagramProjection.summary }}
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-border bg-card p-5 shadow-sm">
-          <div class="space-y-3">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Top strengths
-            </p>
-            <ul class="space-y-2">
-              <li
-                v-for="strength in personalityStore.strengths"
-                :key="strength"
-                class="rounded-2xl bg-muted px-4 py-3 text-sm font-medium"
-              >
-                {{ strength }}
-              </li>
-            </ul>
-          </div>
-        </article>
-      </aside>
     </section>
   </main>
 </template>
