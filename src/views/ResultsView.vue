@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 
 import { Button } from '@/components/ui/button'
-import { CircularGauge } from '@/components/ui/gauge'
+import { AnimatedBar } from '@/components/ui/progress'
 import PersonalityHeader from '@/components/personality/PersonalityHeader.vue'
 import { usePersonalityStore } from '@/stores/personality'
 
@@ -41,16 +41,23 @@ const goDeeper = () => {
         <div
           v-for="trait in personalityStore.traitResults"
           :key="trait.trait"
-          class="flex flex-col items-center gap-3 rounded-3xl border border-border bg-card p-4 sm:p-5 shadow-sm"
+          class="rounded-3xl border border-border bg-card p-5 sm:p-6 shadow-sm"
         >
-          <CircularGauge
-            :value="trait.simpleScore ?? 0"
-            :label="trait.meta.friendlyLabel"
-            :size="160"
-          />
-          <p class="text-center text-xs sm:text-sm leading-5 sm:leading-6 text-muted-foreground px-1">
-            {{ trait.summary }}
-          </p>
+          <div class="space-y-3">
+            <!-- Heading -->
+            <div>
+              <h3 class="font-semibold text-foreground">{{ trait.meta.friendlyLabel }}</h3>
+              <p class="text-xs text-muted-foreground">{{ trait.meta.name }}</p>
+            </div>
+
+            <!-- Animated progress bar -->
+            <AnimatedBar :value="trait.simpleScore ?? 0" />
+
+            <!-- Summary text -->
+            <p class="text-sm leading-6 text-muted-foreground">
+              {{ trait.summary }}
+            </p>
+          </div>
         </div>
       </div>
     </section>
