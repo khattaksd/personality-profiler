@@ -37,7 +37,7 @@ jobs:
           git config user.email "actions@github.com"
           git fetch origin pages-deploy 2>/dev/null || true
           git checkout -b pages-deploy origin/pages-deploy 2>/dev/null || git checkout --orphan pages-deploy
-          rm -rf .
+          find . -maxdepth 1 ! -name .git -exec rm -rf {} + 2>/dev/null || true
           cp -r dist/* .
           echo "essence.khattak.cc" > CNAME
           git add -A
