@@ -32,26 +32,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to pages-deploy branch
-        run: |
-          # Save dist folder contents
-          mkdir -p /tmp/dist-backup
-          cp -r dist/* /tmp/dist-backup/
-          
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin pages-deploy 2>/dev/null || true
-          git checkout -b pages-deploy origin/pages-deploy 2>/dev/null || git checkout --orphan pages-deploy
-          
-          # Clean branch but keep .git
-          find . -maxdepth 1 ! -name .git -exec rm -rf {} + 2>/dev/null || true
-          
-          # Copy dist back
-          cp -r /tmp/dist-backup/* .
-          echo "essence.khattak.cc" > CNAME
-          
-          git add -A
-          git commit -m "Deploy: ${{ github.sha }} at $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
-          git push -u origin pages-deploy
-
-      - name: Deployment complete
-        run: echo "✅ Deployed to https://essence.khattak.cc"
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: pages-deploy
+          cname: essence.khattak.cc
