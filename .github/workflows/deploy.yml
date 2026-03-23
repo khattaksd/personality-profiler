@@ -31,18 +31,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages
+      - name: Deploy to pages-deploy branch
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git fetch origin gh-pages 2>/dev/null || true
-          git checkout -b gh-pages origin/gh-pages 2>/dev/null || git checkout --orphan gh-pages
+          git fetch origin pages-deploy 2>/dev/null || true
+          git checkout -b pages-deploy origin/pages-deploy 2>/dev/null || git checkout --orphan pages-deploy
           rm -rf .
           cp -r dist/* .
           echo "essence.khattak.cc" > CNAME
           git add -A
           git commit -m "Deploy: ${{ github.sha }} at $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
-          git push -u origin gh-pages
+          git push -u origin pages-deploy
 
-      - name: Set deployment URL
-        run: echo "Deployed to https://essence.khattak.cc"
+      - name: Deployment complete
+        run: echo "✅ Deployed to https://essence.khattak.cc"
